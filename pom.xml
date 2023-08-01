@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.0-SNAPSHOT</version>
+		<version>2.7.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.claytonpereira</groupId>
@@ -14,7 +14,11 @@
 	<name>tracker</name>
 	<description>Mobile stations tracking system</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
+		<!--  Use the release flag only if you are using Java 9+  -->
+	   <maven.compiler.release>8</maven.compiler.release>
+		<!-- verbose is useful for debugging purposes -->
+		<maven.compiler.verbose>true</maven.compiler.verbose>
 	</properties>
 	<dependencies>
 		<dependency>
