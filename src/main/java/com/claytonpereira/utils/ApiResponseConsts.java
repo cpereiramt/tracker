@@ -9,4 +9,7 @@ public class ApiResponseConsts {
     public static final String INTERNAL_SERVER_ERROR_MESSAGE = "Internal Server Error" ;
     public static final int OK_CODE = 200;
     public static final String OK_MESSAGE = "Data retrieved successfully" ;
+
+    public static final int INSERTED_CODE = 201;
+    public static final String INSERTED_MESSAGE = "Data inserted successfully" ;
 }

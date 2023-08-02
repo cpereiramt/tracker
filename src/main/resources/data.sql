@@ -30,13 +30,3 @@ VALUES
     ('m8', 155.0, 165.0),
     ('m9', 175.0, 185.0),
     ('m10', 195.0, 205.0);
-
-CREATE TABLE report (
-    id UUID PRIMARY KEY,
-    base_station_id UUID,
-    mobile_station_id UUID,
-    distance FLOAT,
-    timestamp TIMESTAMP,
-    FOREIGN KEY (base_station_id) REFERENCES base_station (id),
-    FOREIGN KEY (mobile_station_id) REFERENCES mobile_station (MOBILE_ID)
-);

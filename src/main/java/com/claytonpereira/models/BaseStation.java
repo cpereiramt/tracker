@@ -2,9 +2,11 @@ package com.claytonpereira.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,4 +18,7 @@ public class BaseStation {
     private float x;
     private float y;
     private float detectionRadiusInMeters;
+
+    @OneToMany(mappedBy = "mobileStation")
+    private List<Report> reports = new ArrayList<>();
 }
