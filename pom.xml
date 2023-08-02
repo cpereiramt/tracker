@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.claytonpereira</groupId>
 	<artifactId>tracker</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>tracker</name>
 	<description>Mobile stations tracking system</description>
 	<properties>
@@ -58,6 +58,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>${project.artifactId}</finalName>
 	</build>
 	<repositories>
 		<repository>
