@@ -47,11 +47,18 @@ public class BaseStationMonitorService {
                     mobileStationReport.setTimestamp(new Timestamp(System.currentTimeMillis()));
                     detectedMobileStations.add(mobileStationReport);
                 }
-                baseStationReport.setReports(detectedMobileStations);
 
             }
-            String jsonObject =  jsonParser.toJson(baseStationReport);
-            System.out.println("Each Base Object --->" + jsonObject);
+           if(detectedMobileStations.size() > 0){
+                baseStationReport.setReports(detectedMobileStations);
+            }
+           else {
+               baseStationReport = null;
+           }
+           if (baseStationReport != null) {
+               String jsonObject = jsonParser.toJson(baseStationReport);
+               System.out.println("Each Base Object --->" + jsonObject);
+           }
         }
     }
 }

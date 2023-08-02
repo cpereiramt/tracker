@@ -4,7 +4,7 @@ CREATE INDEX idx_base_stations_y ON base_station (y);
 
 INSERT INTO base_station (id, name, x, y, detection_radius_in_meters)
 VALUES
-    ('b1', 'Base Station 1', 10.0, 20.0, 100.0),
+    ('b1', 'Base Station 1', 900.0, 800.0, 1000.0),
     ('b2', 'Base Station 2', 30.0, 40.0, 150.0),
     ('b3', 'Base Station 3', 50.0, 60.0, 120.0),
     ('b4', 'Base Station 4', 70.0, 80.0, 80.0),
