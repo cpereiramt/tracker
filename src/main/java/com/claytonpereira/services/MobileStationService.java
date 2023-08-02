@@ -14,13 +14,13 @@ import java.util.Optional;
 @Service
 public class MobileStationService {
     private final MobileStationRepository mobileStationRepository;
-    private final BaseStationRepository baseStationRepository;
+
     Gson gson = new Gson();
     String jsonResponse;
     @Autowired
-    public MobileStationService(MobileStationRepository mobileStationRepository, BaseStationRepository baseStationRepository) {
+    public MobileStationService(MobileStationRepository mobileStationRepository) {
         this.mobileStationRepository = mobileStationRepository;
-        this.baseStationRepository = baseStationRepository;
+
 
     }
     public String getMobileStationByUUID(String uuid) {
