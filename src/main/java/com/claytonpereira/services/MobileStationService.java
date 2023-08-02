@@ -6,7 +6,6 @@ import com.claytonpereira.repositories.BaseStationRepository;
 import com.claytonpereira.repositories.MobileStationRepository;
 import com.claytonpereira.utils.ApiResponseConsts;
 import com.google.gson.Gson;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.claytonpereira.utils;
 
 public class CalculateDistanceBetweenMSToBS {
-    private static final double EARTH_RADIUS = 6371000.0; // Earth's radius in meters
+    private static final double EARTH_RADIUS = 6371000.0;
 
     // Calculate the distance in meters between two points using the Haversine formula
     public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
