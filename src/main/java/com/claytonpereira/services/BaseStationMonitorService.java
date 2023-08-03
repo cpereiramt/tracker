@@ -10,6 +10,7 @@ import com.claytonpereira.repositories.MobileStationRepository;
 import com.claytonpereira.utils.CalculateDistanceBetweenMSToBS;
 import com.claytonpereira.utils.GenerateBaseAndMobileStationID;
 import com.claytonpereira.utils.MobileStationPositionFetcher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -34,13 +35,13 @@ public class BaseStationMonitorService {
     private BaseStationReportRepository baseStationReportRepository;
     private MobileStationPositionFetcher positionFetcher;
     private RestTemplate restTemplate;
+    @Autowired
     public BaseStationMonitorService(MobileStationRepository mobileStationRepository, BaseStationRepository baseStationRepository, MobileStationPositionFetcher positionFetcher, RestTemplate restTemplate, BaseStationReportRepository baseStationReportRepository) {
        this.baseStationRepository = baseStationRepository;
        this.mobileStationRepository = mobileStationRepository;
        this.positionFetcher = positionFetcher;
        this.restTemplate = restTemplate;
        this.baseStationReportRepository = baseStationReportRepository;
-
    }
     @Scheduled(fixedDelay = 5000)
     public void monitorBaseStations() {

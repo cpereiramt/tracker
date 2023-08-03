@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    username: sa
+    url: jdbc:h2:mem:trackDB
+    driverClassName: org.h2.Driver
+    password: ''
+  h2:
+    console:
+      enabled: 'true'
+      settings:
+        web-allow-others: 'true'
+      path: /h2-ui
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: 'true'
+rest:
+  endpoint1:
+    url: 'http://localhost:8080/reports/'
+  endpoint2:
+    url: 'http://localhost:8080/location/'
