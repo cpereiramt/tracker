@@ -7,7 +7,6 @@ import java.sql.Timestamp;
 
 @Getter
 @Setter
-
 public class MobileStationReport {
 
     private String mobileStationId;

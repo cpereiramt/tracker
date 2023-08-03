@@ -1,12 +1,13 @@
-package com.claytonpereira.tracker.models;
+package com.claytonpereira.models;
 
-import static org.junit.Assert.assertEquals;
 
-import com.claytonpereira.models.BaseStation;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@SpringBootTest(classes = com.claytonpereira.models.MobileStation.class)
 public class BaseStationTests {
-
     @Test
     public void testAddBaseStation() {
         BaseStation baseStation = new BaseStation();

@@ -1,13 +1,16 @@
 package com.claytonpereira.models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Getter
 @Setter
+@EqualsAndHashCode
 public class BaseStationReport {
 
     private Long id;
@@ -16,5 +19,5 @@ public class BaseStationReport {
     private String baseStationId;
 
 
-    private List<MobileStationReport> reports;
+    private List<MobileStationReport> reports = new ArrayList<>();
 }
