@@ -13,3 +13,8 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: 'true'
+rest:
+  endpoint1:
+    url: 'http://localhost:8080/reports/'
+  endpoint2:
+    url: 'http://localhost:8080/location/'
