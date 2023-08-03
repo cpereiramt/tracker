@@ -44,7 +44,7 @@ The documentation can be accessed in :
     ```java
     List<BaseStation> baseStationList =  baseStationRepository.findAll();
     ```
-- The response from RestEndpoint2 is not in specified format in the use caso only to maintain the pattern of project for response, if necessary it can be easily modified.     ```JSON
+- The response from RestEndpoint2 is not in specified format in the use case only to maintain the pattern of project for response, if necessary it can be easily modified.     ```JSON
      
   ```JSON
     {
