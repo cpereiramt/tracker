@@ -80,5 +80,4 @@ public class BaseStationReportTest {
         assertNotEquals(report1, report3);
         assertEquals(report1.hashCode(), report2.hashCode());
     }
-
 }

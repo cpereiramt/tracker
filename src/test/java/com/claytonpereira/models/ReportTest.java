@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReportTests {
+public class ReportTest {
     @Test
     public void testAddReport() {
         MobileStation mobileStation = new MobileStation();

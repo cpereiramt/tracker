@@ -8,7 +8,7 @@ import lombok.Setter;
 public class ApiResponseModel<T> {
     private boolean success;
     private T data;
-    private ApiStatusAndMessage responseInformation;
+    private ApiStatusAndMessage responseInformation = new ApiStatusAndMessage();
 
     @Getter
     @Setter

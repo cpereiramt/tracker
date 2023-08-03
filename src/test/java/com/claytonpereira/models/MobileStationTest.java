@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = com.claytonpereira.models.MobileStation.class)
-public class MobileStationTests {
+public class MobileStationTest {
 
     @Test
     public void testAddMobileStation() {
