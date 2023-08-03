@@ -45,7 +45,9 @@ The documentation can be accessed in :
     List<BaseStation> baseStationList =  baseStationRepository.findAll();
     ```
 - The response from RestEndpoint2 is not in specified format in the use caso only to maintain the pattern of project for response, if necessary it can be easily modified.     ```JSON
-      {
+     
+  ```JSON
+    {
       "mobileId": uuid,
       "x": float,
       "y": float,
