@@ -10,7 +10,7 @@ VALUES
     ('b4', 'Base Station 4', 70.0, 80.0, 80.0),
     ('b5', 'Base Station 5', 90.0, 100.0, 200.0),
     ('b6', 'Base Station 6', 110.0, 120.0, 90.0),
-    ('b7', 'Base Station 7', 130.0, 140.0, 180.0),
+    ('b7', 'Base Station 7', 500.0, 640.0, 180.0),
     ('b8', 'Base Station 8', 150.0, 160.0, 70.0),
     ('b9', 'Base Station 9', 170.0, 180.0, 60.0),
     ('b10', 'Base Station 10', 190.0, 200.0, 110.0);

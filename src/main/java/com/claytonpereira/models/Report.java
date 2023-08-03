@@ -7,9 +7,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "report")
 @Getter
 @Setter
+@Table(name = "report", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"base_station_id", "mobile_station_id"})
+})
 public class Report {
 
     @Id
