@@ -78,7 +78,7 @@ public class BaseStationMonitorService {
                restTemplate.postForEntity(endpoint1, request, String.class);
                List<String> mobileIDSSavedInReport = baseStationReport.getReports().stream().map(mobileStationReport -> mobileStationReport.getMobileStationId()).collect(Collectors.toList());
 
-               System.out.println("mobiles Station" + mobileIDSSavedInReport.toString() + "from Base ID saved " + baseStationReport.getBaseStationId());
+               System.out.println("mobiles Station " + mobileIDSSavedInReport.toString() + " from Base ID " + baseStationReport.getBaseStationId() + " saved ");
            }
         }
     }
