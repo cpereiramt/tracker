@@ -30,16 +30,13 @@ public class MobileStationServiceTest {
 
     @Test
     public void testGetMobileStationByUUID_ExistingUUID() {
-        // Prepare test data
         String uuid = "mobile-station-uuid";
         MobileStation mobileStation = new MobileStation();
         mobileStation.setMobileId(uuid);
         mobileStation.setLastKnownX(12.345F);
         mobileStation.setLastKnownX(67.890F);
 
-        // Mock the behavior of the repository
         when(mobileStationRepository.findById(uuid)).thenReturn(Optional.of(mobileStation));
-
         String responseEntity = mobileStationService.getMobileStationByUUID(uuid);
         Gson jsonParse = new Gson();
         ApiResponseModel apiResponseModel = jsonParse.fromJson(responseEntity, ApiResponseModel.class);

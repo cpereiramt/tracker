@@ -39,7 +39,6 @@ public class MobileStationControllerTest {
         String uuid = "example-uuid";
         String locationResponse = "{\"latitude\": 1.23456, \"longitude\": 7.89012}";
 
-        // Prepare the response from the service
         ApiResponseModel apiResponseModel = new ApiResponseModel();
         ApiResponseModel.ApiStatusAndMessage statusAndMessage = new ApiResponseModel.ApiStatusAndMessage();
         statusAndMessage.setStatus(200);
@@ -47,10 +46,8 @@ public class MobileStationControllerTest {
         apiResponseModel.setResponseInformation(statusAndMessage);
         String responseJson = new Gson().toJson(apiResponseModel);
 
-        // Mock the behavior of the mobileStationService
         when(mobileStationService.getMobileStationByUUID(anyString())).thenReturn(responseJson);
 
-        // Perform the GET request and validate the response
         mockMvc.perform(get("/location/{uuid}", uuid))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.responseInformation.status").value(200))

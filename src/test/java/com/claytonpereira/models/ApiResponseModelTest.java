@@ -48,5 +48,4 @@ public class ApiResponseModelTest {
         assertEquals("OK", statusAndMessage.getMessage());
     }
 
-    // You can add more test cases for other scenarios and generic type handling here
 }

@@ -2,7 +2,6 @@ package com.claytonpereira.utils;
 
 import com.claytonpereira.models.ApiResponseModel;
 import com.claytonpereira.models.MobileStation;
-import com.claytonpereira.models.MobileStationReport;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,30 +26,29 @@ public class MobileStationPositionFetcher {
 
     public MobileStation fetchMobileStationPosition(String mobileId) {
         String requestUrl = endpointUrl + mobileId;
-       try {
-           ParameterizedTypeReference<ApiResponseModel<MobileStation>> responseType =
-                   new ParameterizedTypeReference<ApiResponseModel<MobileStation>>() {};
-           ResponseEntity<ApiResponseModel<MobileStation>> responseEntity =
-                   restTemplate.exchange(requestUrl, HttpMethod.GET, null, responseType);
-
-        MobileStation responseData = responseEntity.getBody().getData();
-        if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            return responseData;
-        } else {
+        try {
+            ParameterizedTypeReference<ApiResponseModel<MobileStation>> responseType =
+                new ParameterizedTypeReference<ApiResponseModel<MobileStation>>() {};
+            ResponseEntity<ApiResponseModel<MobileStation>> responseEntity =
+                 restTemplate.exchange(requestUrl, HttpMethod.GET, null, responseType);
+            MobileStation responseData = responseEntity.getBody().getData();
+            if (responseEntity.getStatusCode().is2xxSuccessful()) {
+                return responseData;
+            } else {
+                return null;
+            }
+        } catch (HttpClientErrorException.NotFound ex) {
+        // Handle the 404 error here
+            System.out.println("Mobile station with ID " + mobileId + " not found.");
+            return null;
+        } catch (HttpClientErrorException ex) {
+        // Handle other client errors if needed
+            System.out.println("Error occurred: " + ex.getStatusCode() + " - " + ex.getStatusText());
+            return null;
+        } catch (Exception ex) {
+        // Handle other exceptions if needed
+            ex.printStackTrace();
             return null;
         }
-    } catch (HttpClientErrorException.NotFound ex) {
-        // Handle the 404 error here
-        System.out.println("Mobile station with ID " + mobileId + " not found.");
-        return null;
-    } catch (HttpClientErrorException ex) {
-        // Handle other client errors if needed
-        System.out.println("Error occurred: " + ex.getStatusCode() + " - " + ex.getStatusText());
-        return null;
-    } catch (Exception ex) {
-        // Handle other exceptions if needed
-        ex.printStackTrace();
-        return null;
-    }
     }
 }

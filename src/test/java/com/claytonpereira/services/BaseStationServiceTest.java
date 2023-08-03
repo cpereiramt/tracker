@@ -41,7 +41,6 @@ public class BaseStationServiceTest {
 
     @Test
     public void testSaveReports_SuccessfulInsert() {
-        // Prepare test data
         BaseStationReport baseStationReport = new BaseStationReport();
         baseStationReport.setBaseStationId("base-station-id");
 
@@ -70,16 +69,13 @@ public class BaseStationServiceTest {
         MobileStation mobileStation2 = new MobileStation();
         mobileStation2.setMobileId("mobile-station-id-2");
 
-        // Mock the behavior of the repositories
         when(baseStationRepository.findById("base-station-id")).thenReturn(Optional.of(baseStation));
         when(mobileStationRepository.findById("mobile-station-id-1")).thenReturn(Optional.of(mobileStation1));
         when(mobileStationRepository.findById("mobile-station-id-2")).thenReturn(Optional.of(mobileStation2));
         when(baseStationReportRepository.existsByBaseStationIdAndMobileStationId(any(), any())).thenReturn(false);
 
-        // Perform the saveReports method
         String jsonResponse = baseStationService.saveReports(baseStationReport);
 
-        // Assertions
         ApiResponseModel<BaseStationReport> apiResponseModel = new Gson().fromJson(jsonResponse, ApiResponseModel.class);
         ApiResponseModel.ApiStatusAndMessage statusAndMessage = apiResponseModel.getResponseInformation();
         assertEquals(201, statusAndMessage.getStatus());
@@ -89,7 +85,6 @@ public class BaseStationServiceTest {
 
     @Test
     public void testSaveReports_DuplicateData() {
-        // Prepare test data
         BaseStationReport baseStationReport = new BaseStationReport();
         baseStationReport.setBaseStationId("base-station-id");
 
@@ -109,16 +104,12 @@ public class BaseStationServiceTest {
         MobileStation mobileStation = new MobileStation();
         mobileStation.setMobileId("mobile-station-id");
 
-        // Mock the behavior of the repositories
         when(baseStationRepository.findById("base-station-id")).thenReturn(Optional.of(baseStation));
         when(mobileStationRepository.findById("mobile-station-id")).thenReturn(Optional.of(mobileStation));
         when(baseStationReportRepository.existsByBaseStationIdAndMobileStationId(any(), any())).thenReturn(true);
 
-        // Perform the saveReports method
         String jsonResponse = baseStationService.saveReports(baseStationReport);
-        // Perform the saveReports method
         String jsonResponse2 = baseStationService.saveReports(baseStationReport);
-        // Assertions
         ApiResponseModel<BaseStationReport> apiResponseModel = new Gson().fromJson(jsonResponse2, ApiResponseModel.class);
         ApiResponseModel.ApiStatusAndMessage statusAndMessage = apiResponseModel.getResponseInformation();
         assertEquals(201, statusAndMessage.getStatus());

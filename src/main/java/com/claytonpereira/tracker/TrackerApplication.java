@@ -13,8 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EntityScan({"com.claytonpereira"})
 @EnableScheduling
 public class TrackerApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(TrackerApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(TrackerApplication.class, args);
+    }
 }

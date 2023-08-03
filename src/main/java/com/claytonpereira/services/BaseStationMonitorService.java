@@ -37,12 +37,12 @@ public class BaseStationMonitorService {
     private RestTemplate restTemplate;
     @Autowired
     public BaseStationMonitorService(MobileStationRepository mobileStationRepository, BaseStationRepository baseStationRepository, MobileStationPositionFetcher positionFetcher, RestTemplate restTemplate, BaseStationReportRepository baseStationReportRepository) {
-       this.baseStationRepository = baseStationRepository;
-       this.mobileStationRepository = mobileStationRepository;
-       this.positionFetcher = positionFetcher;
-       this.restTemplate = restTemplate;
-       this.baseStationReportRepository = baseStationReportRepository;
-   }
+        this.baseStationRepository = baseStationRepository;
+        this.mobileStationRepository = mobileStationRepository;
+        this.positionFetcher = positionFetcher;
+        this.restTemplate = restTemplate;
+        this.baseStationReportRepository = baseStationReportRepository;
+    }
     @Scheduled(fixedDelay = 5000)
     public void monitorBaseStations() {
         System.out.println("Scheduled starting executing ..............");
@@ -61,25 +61,24 @@ public class BaseStationMonitorService {
                 double lonBaseRadians = Math.toRadians(baseStation.getY());
                 double latMobRadians = Math.toRadians(mobileStationFromResponse.getLastKnownX());
                 double lonMobRadians = Math.toRadians(mobileStationFromResponse.getLastKnownY());
-              float distance = (float) CalculateDistanceBetweenMSToBS.calculateDistance(latBaseRadians, lonBaseRadians,latMobRadians,lonMobRadians);
+                float distance = (float) CalculateDistanceBetweenMSToBS.calculateDistance(latBaseRadians, lonBaseRadians,latMobRadians,lonMobRadians);
                 boolean alrealdyExistMobile = baseStationReportRepository.existsByBaseStationIdAndMobileStationId(baseStation.getId(), mobileStationID);
                 if (distance <= baseStation.getDetectionRadiusInMeters() && !alrealdyExistMobile) {
                     mobileStationReport.setDistance(distance);
-                   mobileStationReport.setMobileStationId(mobileStationFromResponse.getMobileId());
+                    mobileStationReport.setMobileStationId(mobileStationFromResponse.getMobileId());
                     mobileStationReport.setTimestamp(new Timestamp(System.currentTimeMillis()));
                     detectedMobileStations.add(mobileStationReport);
                 }
             }
-           if(detectedMobileStations.size() > 0) {
-               baseStationReport.setReports(detectedMobileStations);
-               HttpHeaders headers = new HttpHeaders();
-               headers.setContentType(MediaType.APPLICATION_JSON);
-               HttpEntity<BaseStationReport> request = new HttpEntity<>(baseStationReport, headers);
-               restTemplate.postForEntity(endpoint1, request, String.class);
-               List<String> mobileIDSSavedInReport = baseStationReport.getReports().stream().map(mobileStationReport -> mobileStationReport.getMobileStationId()).collect(Collectors.toList());
+            if(detectedMobileStations.size() > 0) {
+                baseStationReport.setReports(detectedMobileStations);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                HttpEntity<BaseStationReport> request = new HttpEntity<>(baseStationReport, headers);
+                restTemplate.postForEntity(endpoint1, request, String.class);
+                List<String> mobileIDSSavedInReport = baseStationReport.getReports().stream().map(mobileStationReport -> mobileStationReport.getMobileStationId()).collect(Collectors.toList());
 
-               System.out.println("mobiles Station " + mobileIDSSavedInReport.toString() + " from Base ID " + baseStationReport.getBaseStationId() + " saved ");
-           }
+                System.out.println("mobiles Station " + mobileIDSSavedInReport.toString() + " from Base ID " + baseStationReport.getBaseStationId() + " saved ");}
         }
     }
 }

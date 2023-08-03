@@ -19,9 +19,8 @@ public class MobileStationPositionFetcherTest {
 
     @Test
     public void testFetchMobileStationPosition_Success() {
-        // Arrange
         RestTemplate restTemplateMock = mock(RestTemplate.class);
-        String endpointUrl = "http://example.com/mobiles/";
+        String endpointUrl = "http://localhost:8080/location/";
         MobileStationPositionFetcher mobileStationPositionFetcher = new MobileStationPositionFetcher(restTemplateMock, endpointUrl);
 
         String mobileId = "12345";
@@ -36,18 +35,15 @@ public class MobileStationPositionFetcherTest {
         when(restTemplateMock.exchange(requestUrl, HttpMethod.GET, null, new ParameterizedTypeReference<ApiResponseModel<MobileStation>>(){}))
                 .thenReturn(responseEntity);
 
-        // Act
         MobileStation result = mobileStationPositionFetcher.fetchMobileStationPosition(mobileId);
 
-        // Assert
         assertEquals(mobileStationData, result);
     }
 
     @Test
     public void testFetchMobileStationPosition_NotFound() {
-        // Arrange
         RestTemplate restTemplateMock = mock(RestTemplate.class);
-        String endpointUrl = "http://example.com/mobiles/";
+        String endpointUrl = "http://localhost:8080/location/";
         MobileStationPositionFetcher mobileStationPositionFetcher = new MobileStationPositionFetcher(restTemplateMock, endpointUrl);
 
         String mobileId = "12345";

@@ -14,10 +14,6 @@ import java.util.List;
 public class BaseStationReport {
 
     private Long id;
-
-
     private String baseStationId;
-
-
     private List<MobileStationReport> reports = new ArrayList<>();
 }

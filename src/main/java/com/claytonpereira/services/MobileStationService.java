@@ -2,7 +2,6 @@ package com.claytonpereira.services;
 
 import com.claytonpereira.models.ApiResponseModel;
 import com.claytonpereira.models.MobileStation;
-import com.claytonpereira.repositories.BaseStationRepository;
 import com.claytonpereira.repositories.MobileStationRepository;
 import com.claytonpereira.utils.ApiResponseConsts;
 import com.google.gson.Gson;
@@ -48,14 +47,14 @@ public class MobileStationService {
                 return jsonResponse;
             }
         }
-           catch (Exception e) {
-               response.setSuccess(false);
-               response.setData(null);
-               error.setStatus(ApiResponseConsts.INTERNAL_SERVER_ERROR_CODE);
-               error.setMessage(ApiResponseConsts.INTERNAL_SERVER_ERROR_MESSAGE);
-               response.setResponseInformation(error);
-               jsonResponse = gson.toJson(response);
-             return jsonResponse;
-       }
+        catch (Exception e) {
+            response.setSuccess(false);
+            response.setData(null);
+            error.setStatus(ApiResponseConsts.INTERNAL_SERVER_ERROR_CODE);
+            error.setMessage(ApiResponseConsts.INTERNAL_SERVER_ERROR_MESSAGE);
+            response.setResponseInformation(error);
+            jsonResponse = gson.toJson(response);
+            return jsonResponse;
+        }
     }
 }

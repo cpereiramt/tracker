@@ -68,10 +68,8 @@ public class BaseStationControllerTest {
         apiResponseModel.setResponseInformation(statusAndMessage);
         String responseJson = gson.toJson(apiResponseModel);
 
-        // Mock the behavior of the baseStationService
         when(baseStationService.saveReports(any(BaseStationReport.class))).thenReturn(responseJson);
 
-        // Perform the POST request and validate the response
         mockMvc.perform(post("/reports")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(reportJson))
