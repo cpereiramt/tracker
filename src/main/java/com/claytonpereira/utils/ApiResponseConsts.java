@@ -1,5 +1,8 @@
 package com.claytonpereira.utils;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ApiResponseConsts {
 
     public static final int NOT_FOUND_CODE = 404;
